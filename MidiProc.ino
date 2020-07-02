@@ -17,7 +17,7 @@ using namespace BALibrary;
 // To get the calibration values for your particular board, first run the
 // BAExpansionCalibrate.ino example and 
 int  potCalibMin = 319;
-int  potCalibMax = 955;
+int  potCalibMax = 879;
 bool potSwapDirection = false;
 
 // Create a control object using the number of switches, pots, encoders and outputs on the
@@ -43,10 +43,10 @@ void setup() {
   // put your setup code here, to run once:
 
   delay(100);
-  Serial.begin(115200);
+  //Serial.begin(115200);
   delay(100);
-  while (!Serial) {}
-  Serial.println("Starting Config");
+  //while (!Serial) { delay(500); }
+  //Serial.println("Starting Config");
 
   #ifdef USE_MIDI
     MIDI.begin(MIDI_CHANNEL_OMNI);
@@ -84,12 +84,12 @@ void setup() {
   midiMap[5][0] = expRing;
   midiMap[5][1] = EXP_RING_CC;
 
-  Serial.println("Done Config");
+  //Serial.println("Done Config");
 
   // Check for calibration
   if (controls.isSwitchHeld(sw0Tip)) {
     // switch is held, enter calibration mode once release
-    if (Serial) { Serial.println("Entering calibration mode, please release SW0"); }
+    //if (Serial) { Serial.println("Entering calibration mode, please release SW0"); }
     while (controls.isSwitchHeld(sw0Tip)) {}
     
     expressionCalib(potCalibMin, potCalibMax, potSwapDirection, controls, sw0Tip, expTip);
@@ -108,7 +108,7 @@ void sendData(DataByte midiCC, DataByte midiValue, DataByte midiChannel)
     Serial1.write(midiChannel);
     Serial1.flush();
   #endif
-  if (Serial) { Serial.println(String("Send MIDI CC=") + midiCC + String(" VAL=") + midiValue + String(" CH=") + midiChannel); }
+  //if (Serial) { Serial.println(String("Send MIDI CC=") + midiCC + String(" VAL=") + midiValue + String(" CH=") + midiChannel); }
 }
 
 

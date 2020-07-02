@@ -151,7 +151,7 @@ private:
 	unsigned m_minCalibration;          ///< stores the min pot value
 	unsigned m_maxCalibration;          ///< stores the max pot value
 	unsigned m_lastValue = 0;           ///< stores previous value
-	float m_feedbackFitlerValue = 0.9f; ///< feedback value for POT filter
+	float m_feedbackFitlerValue = 0.1f; ///< feedback value for POT filter
 	float m_thresholdFactor = 0.05f;    ///< threshold factor causes values pot to saturate faster at the limits, default is 5%
     unsigned m_minCalibrationThresholded; ///< stores the min pot value after thresholding
     unsigned m_maxCalibrationThresholded; ///< stores the max pot value after thresholding
